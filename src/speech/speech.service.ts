@@ -34,13 +34,15 @@ export class SpeechService {
 
   async speechToText(audioBuffer: Buffer): Promise<string> {
     const audio: speechProtos.google.cloud.speech.v1.IRecognitionAudio = {
-      content: audioBuffer.toString("base64"),
+      content: audioBuffer,
     };
 
     const config: speechProtos.google.cloud.speech.v1.IRecognitionConfig = {
-      encoding: "LINEAR16" as const,
-      sampleRateHertz: 16000,
+      encoding: "WEBM_OPUS",
+      sampleRateHertz: 48000, // Updated to match WEBM OPUS header
       languageCode: "en-US",
+      enableAutomaticPunctuation: true,
+      model: "default",
     };
 
     const request: speechProtos.google.cloud.speech.v1.IRecognizeRequest = {
