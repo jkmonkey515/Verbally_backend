@@ -6,12 +6,15 @@ async function bootstrap() {
 
   // Enable CORS with credentials
   app.enableCors({
-    origin: "http://localhost:5173",
+    origin: process.env.CORS_ORIGIN || "http://localhost:5173",
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
-    credentials: true, // Enable credentials
+    credentials: true,
   });
 
-  await app.listen(3000);
+  // Use the port provided by Heroku or default to 3000
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  console.log(`Application is running on port ${port}`);
 }
 bootstrap();
