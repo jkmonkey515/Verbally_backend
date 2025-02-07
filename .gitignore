@@ -5,3 +5,5 @@ src/keys
 /src/keys
 dist
 dist-ssr
+dist/
+/dist/
