@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { TextToSpeechClient } from "@google-cloud/text-to-speech";
 import { SpeechClient, protos as speechProtos } from "@google-cloud/speech";
-import * as path from "path";
 import { protos } from "@google-cloud/text-to-speech";
 
 @Injectable()
@@ -10,12 +9,12 @@ export class SpeechService {
   private speechClient: SpeechClient;
 
   constructor() {
-    // Initialize Text-to-Speech client with credentials
+    // Initialize Text-to-Speech client with credentials from environment
     this.textToSpeechClient = new TextToSpeechClient({
       credentials: require("../keys/text-to-speech.json"),
     });
 
-    // Initialize Speech-to-Text client with credentials
+    // Initialize Speech-to-Text client with the same credentials
     this.speechClient = new SpeechClient({
       credentials: require("../keys/speech-to-text.json"),
     });

@@ -13,14 +13,15 @@ exports.SpeechService = void 0;
 const common_1 = require("@nestjs/common");
 const text_to_speech_1 = require("@google-cloud/text-to-speech");
 const speech_1 = require("@google-cloud/speech");
+const path = require("path");
 let SpeechService = class SpeechService {
     constructor() {
+        const keyFilePathTTS = path.resolve(__dirname, "../keys/text-to-speech.json");
+        const keyFilePathSTT = path.resolve(__dirname, "../keys/speech-to-text.json");
         this.textToSpeechClient = new text_to_speech_1.TextToSpeechClient({
-            credentials: require("../keys/text-to-speech.json"),
+            keyFilename: keyFilePathTTS,
         });
-        this.speechClient = new speech_1.SpeechClient({
-            credentials: require("../keys/speech-to-text.json"),
-        });
+        this.speechClient = new speech_1.SpeechClient({ keyFilename: keyFilePathSTT });
     }
     async textToSpeech(text) {
         const request = {
