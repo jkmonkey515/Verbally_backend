@@ -11,12 +11,15 @@ export class SpeechService {
   constructor() {
     // Initialize Text-to-Speech client with credentials from environment
     this.textToSpeechClient = new TextToSpeechClient({
-      credentials: require("../keys/text-to-speech.json"),
+      credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS_TEXT_TO_SPEECH),
     });
+    // this.textToSpeechClient = new TextToSpeechClient({
+    //   credentials: require("../keys/text-to-speech.json"),
+    // });
 
     // Initialize Speech-to-Text client with the same credentials
     this.speechClient = new SpeechClient({
-      credentials: require("../keys/speech-to-text.json"),
+      credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS_SPEECH_TO_TEXT),
     });
   }
 
