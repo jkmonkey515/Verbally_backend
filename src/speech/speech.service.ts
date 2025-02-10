@@ -27,7 +27,7 @@ export class SpeechService {
     const request: protos.google.cloud.texttospeech.v1.ISynthesizeSpeechRequest =
       {
         input: { text },
-        voice: { languageCode: "en-US", ssmlGender: "NEUTRAL" },
+        voice: { languageCode: "en-GB", ssmlGender: "NEUTRAL" },
         audioConfig: { audioEncoding: "MP3" },
       };
 
@@ -43,7 +43,7 @@ export class SpeechService {
     const config: speechProtos.google.cloud.speech.v1.IRecognitionConfig = {
       encoding: "WEBM_OPUS",
       sampleRateHertz: 48000, // Updated to match WEBM OPUS header
-      languageCode: "en-US",
+      languageCode: "en-GB",
       enableAutomaticPunctuation: true,
       model: "default",
     };
