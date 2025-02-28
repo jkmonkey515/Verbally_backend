@@ -6,7 +6,10 @@ async function bootstrap() {
 
   // Enable CORS with credentials
   app.enableCors({
-    origin: process.env.CORS_ORIGIN || "http://localhost:5173",
+    origin:
+      process.env.CORS_ORIGIN1 ||
+      process.env.CORS_ORIGIN2 ||
+      "http://localhost:5173",
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
