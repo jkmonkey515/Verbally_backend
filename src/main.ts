@@ -6,10 +6,11 @@ async function bootstrap() {
 
   // Enable CORS with credentials
   app.enableCors({
-    origin:
-      process.env.CORS_ORIGIN1 ||
-      process.env.CORS_ORIGIN2 ||
+    origin: [
+      "https://verbally.org.uk",
+      "https://www.inclusive-surveys.com",
       "http://localhost:5173",
+    ],
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
